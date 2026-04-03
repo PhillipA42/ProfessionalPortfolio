@@ -1,0 +1,404 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  /* Global Section Transitions */
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid rgba(23, 190, 187, 0.1);
+  }
+
+  /* Hero/Home Section Styling */
+  .hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background-color: #011627;
+  }
+
+  .profile-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .profile-img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 40px;
+    border: 2px solid #17bebb;
+    box-shadow: 0 10px 40px rgba(23, 190, 187, 0.2);
+  }
+
+  /* Floating Labels (Matching your uploaded image) */
+  .float-badge {
+    position: absolute;
+    background: #0b2135;
+    color: #17bebb;
+    border: 1px solid #17bebb;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+  }
+  .badge-code {
+    top: 15%;
+    left: -30px;
+  }
+  .badge-design {
+    top: 25%;
+    right: -30px;
+  }
+  .badge-ideas {
+    bottom: 20%;
+    right: -15px;
+  }
+
+  /* Custom Buttons */
+  .btn-custom-primary {
+    background-color: #17bebb;
+    color: #011627;
+    font-weight: bold;
+    border: none;
+    padding: 14px 35px;
+    transition: 0.3s ease;
+  }
+  .btn-custom-primary:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 20px #17bebb;
+    color: #011627;
+  }
+  .btn-custom-outline {
+    border: 2px solid #17bebb;
+    color: #17bebb;
+    font-weight: bold;
+    padding: 14px 35px;
+  }
+  .btn-custom-outline:hover {
+    background: rgba(23, 190, 187, 0.1);
+    color: #ffffff;
+  }
+
+  /* Form and Card adjustments for dark theme */
+  .card-dark {
+    background: #0b2135;
+    border: 1px solid #17bebb;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+  }
+  .card-dark:hover {
+    transform: translateY(-10px);
+  }
+
+  .profile-img {
+    width: 100%;
+    /* Increase this value to make the image larger */
+    max-width: 550px;
+    border-radius: 40px;
+    border: 2px solid #17bebb;
+    box-shadow: 0 10px 40px rgba(23, 190, 187, 0.2);
+    /* This ensures the image keeps its proportions */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<section id="home" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 text-start">
+        <h1 class="display-1 fw-bold mb-2" style="color: #17bebb">
+          Hello, I'm Phillip Opiyo
+        </h1>
+        <p class="fs-2 mb-4" style="color: #17bebb">
+          Creative Full-Stack Developer
+        </p>
+        <p
+          class="lead mb-5"
+          style="color: #ccd6f6; max-width: 600px; line-height: 1.8"
+        >
+          I bridge the gap between complex backend logic and intuitive user
+          experiences. As a Full Stack Developer, I architect scalable systems
+          with Python and Django while crafting high-performance frontends that
+          bring ideas to life.
+        </p>
+        <div class="d-flex gap-3">
+          <a href="#projects" class="btn btn-custom-primary btn-lg rounded-pill"
+            >View My Work</a
+          >
+          <a href="#contact" class="btn btn-custom-outline btn-lg rounded-pill"
+            >Get In Touch</a
+          >
+        </div>
+      </div>
+      <div class="col-lg-5 text-center mt-5 mt-lg-0">
+        <div class="profile-container">
+          <img
+            src="{% static 'details/images/philpic.jpeg' %}"
+            alt="Phillip Owino"
+            class="profile-img"
+          />
+          <div class="float-badge badge-code"><span>&lt;/&gt;</span> Code</div>
+          <div class="float-badge badge-design">
+            <i class="fas fa-terminal"></i> Linux
+          </div>
+          <div class="float-badge badge-ideas">
+            <i class="fas fa-lightbulb"></i> Ideas
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background-color: #0b2135">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 ps-lg-5">
+        <h2 class="display-5 fw-bold mb-4" style="color: #17bebb">About Me</h2>
+        <p class="lead mb-5"
+          style="color: #ccd6f6; max-width: 600px; line-height: 1.8">
+          Bridging the gap between a server's logic and a user's experience is
+          where I do my best work. As a Full-Stack Developer, I specialize in
+          the Django/Python ecosystem, creating secure, scalable applications
+          from the database up. I believe that great software should be
+          invisible—meaning it works so seamlessly and securely that the user
+          never has to think about the complexity behind the screen.
+        </p>
+      </div>
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="p-3 border border-info rounded-4">
+          <img
+            src="{% static 'details/images/philpic.jpeg' %}"
+            class="img-fluid rounded-4 shadow"
+            alt="About Phillip"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="display-5 fw-bold mb-5" style="color: #17bebb">
+      Featured Projects
+    </h2>
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-md-4 mb-4">
+        <div class="card card-dark h-100 p-3 shadow-lg">
+          {% if project.image %}
+          <img
+            src="{{ project.image.url }}"
+            class="card-img-top rounded-3 mb-3"
+            alt="{{ project.title }}"
+          />
+          {% endif %}
+          <div class="card-body">
+            <h4 class="fw-bold" style="color: #17bebb">{{ project.title }}</h4>
+            <p class="text-white-50 small mb-3">{{ project.description }}</p>
+            <span
+              class="badge rounded-pill px-3 py-2"
+              style="
+                background: rgba(23, 190, 187, 0.1);
+                color: #17bebb;
+                border: 1px solid #17bebb;
+              "
+            >
+              {{ project.technology }}
+            </span>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center text-white-50">
+        <p>Projects are currently being loaded from the database...</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background-color: #0b2135">
+  <div class="container text-center">
+    <h2 class="display-5 fw-bold mb-5" style="color: #17bebb">
+      Technical Expertise
+    </h2>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Python
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Django
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        PostgreSQL
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Linux (Parrot OS)
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        REST APIs
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Git
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Docker
+      </div>
+      <div
+        class="px-4 py-3 rounded-4"
+        style="
+          background: #011627;
+          border: 1px solid #17bebb;
+          color: #17bebb;
+          font-weight: bold;
+        "
+      >
+        Bootstrap
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container text-center py-4">
+    <h2 class="display-5 fw-bold mb-5" style="color: #17bebb">Testimonials</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div
+          class="p-5 rounded-5"
+          style="
+            background: rgba(11, 33, 53, 0.5);
+            border-left: 5px solid #17bebb;
+          "
+        >
+          <p class="fs-3 fst-italic text-white mb-4">
+            "Phillip's ability to simplify complex backend logic while
+            maintaining high security standards is exactly what our project
+            needed."
+          </p>
+          <h5 class="fw-bold" style="color: #17bebb">
+            — Lead Architect, Tech Solutions
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background-color: #0b2135">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="display-5 fw-bold" style="color: #17bebb">Get In Touch</h2>
+        <p class="text-white-50">
+          Have a project in mind? Let's build something amazing together.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div
+          class="card p-5 shadow-lg border-0"
+          style="background: #011627; border-radius: 30px"
+        >
+          <form method="post">
+            {% csrf_token %}
+            <div class="custom-form-style">{{ form.as_p }}</div>
+            <button
+              type="submit"
+              class="btn btn-custom-primary w-100 mt-4 rounded-pill py-3"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Styling the Django form to match our theme */
+  .custom-form-style p {
+    margin-bottom: 20px;
+  }
+  .custom-form-style label {
+    color: #17bebb;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .custom-form-style input,
+  .custom-form-style textarea {
+    width: 100%;
+    background: #0b2135;
+    border: 1px solid rgba(23, 190, 187, 0.3);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .custom-form-style input:focus {
+    outline: none;
+    border-color: #17bebb;
+    box-shadow: 0 0 10px rgba(23, 190, 187, 0.2);
+  }
+</style>
+{% endblock %}

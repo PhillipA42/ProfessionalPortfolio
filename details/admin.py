@@ -1,0 +1,11 @@
+from django.contrib import admin
+from .models import Details, ContactMessage
+# Register your models here.
+
+admin.site.register(Details)
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'created_at')
+    readonly_fields = ('created_at',)
+    search_fields = ('name', 'email')
