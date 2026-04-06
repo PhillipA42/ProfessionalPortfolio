@@ -1,0 +1,173 @@
+/* --- CSS Variables (Theme Management) --- */
+:root {
+    /* Dark Mode (Default) */
+    --bg-color: #011627;
+    --card-bg: #0b2135;
+    --text-main: #17BEBB;
+    --text-muted: #ccd6f6;
+    --nav-bg: rgba(1, 22, 39, 0.95);
+    --border-color: #17BEBB;
+    --input-bg: #011627;
+    --white: #ffffff;
+}
+
+[data-theme="light"] {
+    /* Light Mode Palette */
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-main: #011627; /* Dark navy for contrast */
+    --text-muted: #4a5568;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --input-bg: #ffffff;
+    --white: #011627;
+}
+
+/* --- Global Reset & Behavior --- */
+html { 
+    scroll-behavior: smooth; 
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-main); 
+    font-family: 'Inter', sans-serif; 
+    padding-top: 80px; 
+    padding-bottom: 120px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, .fw-bold { 
+    color: var(--text-main); 
+}
+
+.text-white-50, .lead {
+    color: var(--text-muted) !important;
+}
+
+/* --- Navbar Styling --- */
+.navbar { 
+    background-color: var(--nav-bg) !important; 
+    border-bottom: 1px solid var(--border-color); 
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--white) !important;
+    letter-spacing: 2px;
+}
+
+.text-teal { color: #17BEBB; }
+
+.nav-link { 
+    color: var(--text-muted) !important; 
+    font-weight: 500; 
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover { 
+    color: #17BEBB !important; 
+}
+
+/* Sliding underline for links */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #17BEBB;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 70%;
+}
+
+/* Specialized Contact Button */
+.nav-contact-btn {
+    border: 1px solid #17BEBB !important;
+    border-radius: 25px;
+    color: #17BEBB !important;
+}
+
+.nav-contact-btn:hover {
+    background-color: #17BEBB !important;
+    color: #011627 !important;
+    box-shadow: 0 0 15px rgba(23, 190, 187, 0.4);
+}
+
+.nav-contact-btn::after { display: none; }
+
+.navbar-toggler {
+    border-color: #17BEBB;
+}
+
+/* Hamburger icon dynamic color */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2317BEBB' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* --- Components --- */
+.card, .skill-card, .resume-card { 
+    background-color: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    color: var(--text-main); 
+    transition: all 0.3s ease;
+}
+
+.form-control { 
+    background-color: var(--input-bg); 
+    border: 1px solid var(--border-color); 
+    color: var(--white); 
+}
+
+.form-control:focus {
+    background-color: var(--card-bg);
+    border-color: #17BEBB;
+    color: var(--white);
+    box-shadow: 0 0 8px rgba(23, 190, 187, 0.5);
+}
+
+/* --- Footer --- */
+.fixed-footer { 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: var(--nav-bg); 
+    border-top: 1px solid var(--border-color); 
+    padding: 20px 0; 
+    z-index: 1030; 
+}
+
+.social-icon {
+    color: #17BEBB;
+    font-size: 1.4rem;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.whatsapp:hover { color: #25D366; }
+.facebook:hover { color: #1877F2; }
+.x-twitter:hover { color: #ffffff; }
+[data-theme="light"] .x-twitter:hover { color: #000000; }
+.instagram:hover { color: #E4405F; }
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+}

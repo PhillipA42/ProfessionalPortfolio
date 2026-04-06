@@ -1,0 +1,324 @@
+/* Global Section Transitions */
+section {
+  padding: 100px 0;
+  border-bottom: 1px solid rgba(23, 190, 187, 0.1);
+}
+
+/* Hero/Home Section Styling */
+.hero-section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #011627;
+}
+
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-img {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 40px;
+  border: 2px solid #17bebb;
+  box-shadow: 0 10px 40px rgba(23, 190, 187, 0.2);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.float-badge {
+  position: absolute;
+  background: #0b2135;
+  color: #17bebb;
+  border: 1px solid #17bebb;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+.badge-code { top: 15%; left: -30px; }
+.badge-design { top: 25%; right: -30px; }
+.badge-ideas { bottom: 20%; right: -15px; }
+
+/* Buttons */
+.btn-custom-primary {
+  background-color: #17bebb;
+  color: #011627;
+  font-weight: bold;
+  border: none;
+  padding: 14px 35px;
+  transition: 0.3s ease;
+}
+
+.btn-custom-primary:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px #17bebb;
+  color: #011627;
+}
+
+.btn-custom-outline {
+  border: 2px solid #17bebb;
+  color: #17bebb;
+  font-weight: bold;
+  padding: 14px 35px;
+}
+
+/* Project Cards Styling */
+.card-dark {
+  background: #0b2135;
+  border: 1px solid rgba(23, 190, 187, 0.2);
+  color: #ffffff;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-dark:hover {
+  transform: translateY(-8px);
+  border-color: #17bebb;
+  box-shadow: 0 10px 25px rgba(23, 190, 187, 0.15);
+}
+
+.project-img-container {
+  padding: 10px;
+}
+
+.project-img {
+  border-radius: 20px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Skill Card Styling */
+.skill-card {
+  background: #011627;
+  border: 1px solid rgba(23, 190, 187, 0.2);
+  padding: 35px; /* Increased padding for better breathability */
+  border-radius: 25px;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother "pop" effect */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-card:hover {
+  transform: translateY(-12px);
+  border-color: #17bebb;
+  box-shadow: 0 15px 35px rgba(23, 190, 187, 0.15);
+  background: rgba(23, 190, 187, 0.02); /* Very subtle glow on hover */
+}
+
+.skill-icon {
+  font-size: 2.5rem; /* Slightly larger icons */
+  color: #17bebb;
+  margin-bottom: 20px;
+}
+
+.skill-card h4 {
+  color: #17bebb; /* Changed to match your primary theme color */
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.skill-card p {
+  color: #ccd6f6;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px; /* Space for the tags below */
+}
+
+/* Technology Tags Styling */
+.skill-tags {
+  margin-top: auto; /* Pushes tags to the bottom of the card */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: rgba(23, 190, 187, 0.1);
+  color: #17bebb;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(23, 190, 187, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.skill-card:hover .skill-tag {
+  background: rgba(23, 190, 187, 0.2);
+  border-color: #17bebb;
+}
+
+/* Form Styling */
+.custom-form-style p { margin-bottom: 20px; }
+.custom-form-style label { color: #17bebb; font-weight: bold; margin-bottom: 8px; display: block; }
+.custom-form-style input, .custom-form-style textarea {
+  width: 100%; background: #0b2135; border: 1px solid rgba(23, 190, 187, 0.3); color: white; padding: 12px; border-radius: 10px;
+}
+
+/* Typewriter Cursor */
+.typed-cursor {
+  color: #17bebb;
+  font-size: 2.5rem;
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+  
+}
+
+/* --- Enhanced About Section Styling --- */
+  .about-section {
+    background-color: #0b2135; /* Matches other app sections */
+    padding: 100px 0; /* Consistent padding */
+  }
+
+  .about-content-wrapper {
+    line-height: 1.8;
+  }
+
+  /* Key Improvement: The Image Card Container */
+  .about-img-container {
+    display: inline-block;
+    padding: 10px; /* Space between img and border */
+    background: #011627; /* Matches main theme background */
+    border-radius: 30px; /* Smooth corners */
+    border: 1px solid rgba(23, 190, 187, 0.2); /* Sleek, subtle border */
+    transition: all 0.3s ease;
+    overflow: hidden; /* Keeps things contained */
+  }
+
+  /* Subtle hover interaction to match the rest of your site */
+  .about-img-container:hover {
+    transform: translateY(-8px);
+    border-color: #17bebb;
+    box-shadow: 0 15px 30px rgba(23, 190, 187, 0.1);
+  }
+
+  .about-img {
+    border-radius: 25px; /* Inner smooth corners */
+    width: 100%;
+    max-width: 480px; /* Adjust size if needed */
+    height: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Soft shadow on the photo itself */
+  }
+
+
+  .about-img-placeholder {
+    width: 400px;
+    height: 400px;
+    background: #011627;
+    border-radius: 30px;
+    border: 1px solid rgba(23, 190, 187, 0.2);
+  }
+
+ 
+  .btn-custom-primary {
+    background-color: #17bebb;
+    color: #011627;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s ease;
+  }
+  .btn-custom-primary:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px #17bebb;
+    color: #011627;
+  }
+  .btn-custom-outline {
+    border: 2px solid #17bebb;
+    color: #17bebb;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  .btn-custom-outline:hover {
+    background: rgba(23, 190, 187, 0.1);
+    color: #ffffff;
+  }
+
+  /* --- Resume Section Enhancement --- */
+.resume-section {
+    padding: 80px 0;
+    background-color: #011627;
+}
+
+.resume-card {
+    background: linear-gradient(145deg, #0b2135, #011627);
+    border: 1px solid rgba(23, 190, 187, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.resume-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(23, 190, 187, 0.5);
+}
+
+.resume-tag {
+    background: rgba(23, 190, 187, 0.1);
+    color: #17bebb;
+    border: 1px solid rgba(23, 190, 187, 0.3);
+    padding: 8px 15px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.btn-download-lg {
+    background-color: #17bebb;
+    color: #011627;
+    font-weight: 700;
+    padding: 15px 35px;
+    border: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-download-lg:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 20px #17bebb;
+    transform: scale(1.05);
+}
+
+/* --- Resume Timeline & Details --- */
+.education-timeline {
+    position: relative;
+}
+
+.edu-item {
+    transition: all 0.3s ease;
+}
+
+.edu-item:hover {
+    border-left-width: 4px !important;
+    background: rgba(23, 190, 187, 0.05);
+}
+
+.resume-card hr {
+    opacity: 0.1;
+    margin: 30px 0;
+}
+
+.resume-card ul li strong {
+    font-size: 0.95rem;
+}
+
+.footer-contact-info {
+    font-size: 0.85rem;
+    color: #ccd6f6;
+}

@@ -1,32 +1,20 @@
 from django.shortcuts import render, redirect
-from .models import Details
+from .models import Details, ContactMessage
 from .forms import ContactForm
 from django.contrib import messages
-# Create your views here.
 
 def details(request):
-    details = details.objects.all()
-    context = {
-        'details': details
-    }
-    
-    return render(request, 'details.html', context)
-
-
-def details(request):
-   
     projects = Details.objects.all() 
     
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('details')
+            # This will now correctly use the ContactMessage model 
+            # as long as your ContactForm is linked to it in forms.py
+            form.save() 
+            messages.success(request, "Message sent successfully!")
+            return redirect('details') 
     else:
         form = ContactForm()
     
-    # Pass 'projects' to the template
-    return render(request, 'details.html', {
-        'projects': projects, 
-        'form': form
-    })
+    return render(request, 'details.html', {'projects': projects, 'form': form})
