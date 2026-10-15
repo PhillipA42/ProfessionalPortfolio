@@ -20,13 +20,44 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9-*xt-i=drrk-&^%gywotobnm9a$k5wb9yl4#e-9d=4q_lnk$3'
+# SECURITY: configure SECRET_KEY in Vercel and rotate the previously committed key.
+IS_VERCEL = os.environ.get('VERCEL') == '1'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY:
+    if IS_VERCEL:
+        raise RuntimeError('Set SECRET_KEY in the Vercel project environment variables.')
+    SECRET_KEY = 'django-insecure-local-development-only'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Keep local development convenient, but never expose Django's debug page on Vercel.
+DEBUG = os.environ.get('DEBUG', 'false' if IS_VERCEL else 'true').lower() in {
+    '1', 'true', 'yes'
+}
 
-ALLOWED_HOSTS = []
+# Vercel provides deployment-specific and production hostnames as environment variables.
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS += [
+    host.strip()
+    for host in os.environ.get('ALLOWED_HOSTS', '').split(',')
+    if host.strip()
+]
+ALLOWED_HOSTS += [
+    os.environ[name]
+    for name in ('VERCEL_URL', 'VERCEL_PROJECT_PRODUCTION_URL')
+    if os.environ.get(name)
+]
+ALLOWED_HOSTS = list(dict.fromkeys(ALLOWED_HOSTS))
+
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+    if origin.strip()
+]
+CSRF_TRUSTED_ORIGINS += [
+    f'https://{host}'
+    for host in ALLOWED_HOSTS
+    if host.endswith('.vercel.app')
+]
+CSRF_TRUSTED_ORIGINS = list(dict.fromkeys(CSRF_TRUSTED_ORIGINS))
 
 
 # Application definition
