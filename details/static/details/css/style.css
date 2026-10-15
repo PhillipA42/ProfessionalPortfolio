@@ -322,3 +322,62 @@ section {
     font-size: 0.85rem;
     color: #ccd6f6;
 }
+
+/* Light theme overrides for colors otherwise hard-coded in this page stylesheet
+   or in the template's inline styles. */
+[data-theme="light"] section,
+[data-theme="light"] .hero-section,
+[data-theme="light"] .about-section,
+[data-theme="light"] .resume-section,
+[data-theme="light"] #skills,
+[data-theme="light"] #contact {
+  background-color: var(--bg-color) !important;
+  color: var(--text-main);
+}
+
+[data-theme="light"] .card-dark,
+[data-theme="light"] .skill-card,
+[data-theme="light"] .resume-card,
+[data-theme="light"] .float-badge,
+[data-theme="light"] .about-img-container,
+[data-theme="light"] .about-img-placeholder,
+[data-theme="light"] #contact .card {
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 8px 24px rgba(1, 22, 39, 0.08);
+}
+
+[data-theme="light"] .text-white,
+[data-theme="light"] .text-secondary,
+[data-theme="light"] .custom-form-style input,
+[data-theme="light"] .custom-form-style textarea {
+  color: var(--text-main) !important;
+}
+
+[data-theme="light"] .text-white-50,
+[data-theme="light"] .lead,
+[data-theme="light"] .skill-card p,
+[data-theme="light"] .footer-contact-info {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .custom-form-style input,
+[data-theme="light"] .custom-form-style textarea,
+[data-theme="light"] .form-control {
+  background-color: var(--input-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="light"] .custom-form-style input::placeholder,
+[data-theme="light"] .custom-form-style textarea::placeholder,
+[data-theme="light"] .form-control::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .about-img-container,
+[data-theme="light"] .card-dark,
+[data-theme="light"] .skill-card,
+[data-theme="light"] .resume-card {
+  background-image: none;
+}
